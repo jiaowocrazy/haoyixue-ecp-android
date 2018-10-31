@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'android-apt'
+android {
+    signingConfigs {
+        config {
+            keyAlias 'sbdx'
+            keyPassword '123456'
+            storeFile file('D:/dxtek/keyStore.jks')
+            storePassword '123456'
+            v2SigningEnabled false
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion '26.0.3'
+    defaultConfig {
+        applicationId "net.dxtek.haoyixue.android.build"
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 3000090
+        versionName "5.1.6"
+ //       versionName "2.0.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+            minifyEnabled false
+            zipAlignEnabled true
+            signingConfig signingConfigs.config
+        }
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+    dexOptions {
+        jumboMode true
+    }
+    flavorDimensions "mark"
+    productFlavors {
+        // 技能中油
+        jnzy {
+            dimension "mark"
+            applicationId "net.dxtek.haoyixue.android.build"
+        }
+        // 党建学习
+        djxy {
+            dimension "mark"
+            applicationId "cn.com.sabachina.mlearn.zbe"
+        }   // 党建学习
+        hyx {
+            dimension "mark"
+            applicationId "cn.com.sabachina.mlearn.build"
+        }
+        xslxy {
+            dimension "mark"
+            applicationId "net.dxtek.xslxy2.android.build"
+        }
+        nmg {
+            dimension "mark"
+            applicationId "net.dxtek.nmg.android.build"
+        }
+        xjnzy {
+            dimension "mark"
+            applicationId "net.dxtek.xjnzy.android.build"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile'com.android.support:multidex:1.0.1'
+    implementation project(':haoyixue-ecp-android-main')
+    //    jnzyCompile project(path: ':haoyixue-ecp-android-main', configuration: 'jnzyRelease')
+    //    djxyCompile project(path: ':haoyixue-ecp-android-main', configuration: 'djxyRelease')
+}

@@ -1,0 +1,370 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.dxtek.haoyixue.android.build"
+    android:versionCode="3000002"
+    android:versionName="3.0.2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_LOGS" /> <!-- 获取logcat日志 -->
+    <!--<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- JPUSH required -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- JPUSH required end-->
+
+    <!-- JPUSH optional -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- JPUSH optional end-->
+
+    <!--版本更新权限 -->
+    <!-- 必选-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络通信-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />  <!-- 获取设备信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取MAC地址-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读写sdcard，storage等等 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <!-- 可选-->
+    <uses-permission android:name="android.permission.READ_LOGS" /> <!-- 获取logcat日志 -->
+
+    <application
+        android:name="net.dxtek.haoyixue.ecp.android.application.AppContext"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.splash.LoadingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 版本更新可选-->
+        <activity android:name="com.pgyersdk.feedback.FeedbackActivity"/>
+
+        <provider
+            android:name="com.pgyersdk.PgyerProvider"
+            android:authorities="${applicationId}.com.pgyer.provider"
+            android:exported="false"
+            />
+
+        <!--
+       <provider
+           android:name="android.support.v4.content.FileProvider"
+           android:authorities="net.dxtek.nmg.android.build.fileprovider"
+           android:grantUriPermissions="true"
+           android:exported="false">
+           <meta-data
+               android:name="android.support.File_PROVIDER_PATHS"
+               android:value="@xml/file_paths" />
+       </provider>
+       -->
+
+       <meta-data
+           android:name="PGYER_APPID"
+           android:value="@string/appid" >
+       </meta-data>
+
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.main.MainActivity"
+           android:label="@string/title_activity_main"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.CommonWebViewActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.studio.ExpertStudioActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.studio.ExpertStudioDetailedActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.PhotoActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.login.LoginActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.expert.ExpertPersonalActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.wenda.ask.AskQuestionActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.wenda.QuestionDetailedActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.wenda.post.AnswerActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.wenda.QuestionAnswerActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.groupdiscuss.GroupDiscussActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.groupdiscuss.GroupDiscussDetailActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.expert.ExpertListActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.news.NewsActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.ModifyPasswordActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.knowledge.KnowledgeShareActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.knowledge.KnowledgeDetailedActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.knowledge.KnowledgeCommentActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.ChangeServerActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.PDFReaderActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.utils.photo.AlbumActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.CameraActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.wenda.edit.EditQuestionActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.groupdiscuss.create.GroupDiscussCreateActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.groupdiscuss.edit.GroupDiscussEditActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.studio.ExpertStudioResultDetailActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.supervisechart.SuperviseChartActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.requiredcourse.detail.RequiredCourseDetailedActivity"
+           android:screenOrientation="portrait"
+           android:windowSoftInputMode="adjustPan|stateHidden" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.requiredcourse.list.RequiredCourseListActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.examination.ExaminationWelcomeActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.examination.ExaminationActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.examination.ExaminationsActivity"
+           android:windowSoftInputMode="adjustPan|stateHidden"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.examination.ExaminationCardActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.learningexchange.LearningExchangeListActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.jumplist.BranchJumpListActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.jumplist.LearnScoreJumpListActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.calendar.CalendarActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.H5Activity"
+           android:hardwareAccelerated="true"
+           android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.H5Activitys"
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.jumplist.MyCourseActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.oldexam.ExamOldActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.guide.GuideActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.report.train.TrainingReportActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.report.student.StudentReportActivity"
+           android:screenOrientation="portrait" />
+
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.Notice.NoticeActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.Chat.ChatActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.RankManage.RankManageActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.Group.GroupActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.StudentCalendar.StudentCalendarActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.StudengDetail.StudengDetailActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.StudengDetail.StudentUpdateActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.UserCalendar.UserCalendarActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsterUser.InsterUserActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.ChooseUser.ChooseUserActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InserUserPoint.InsterUserPointActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsertGroupPoint.InsertGroupPointActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.Result.ResultDetailActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.Result.ResultActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsertResult.InsertResultTitleActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsertResult.InsertResultDetailActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.CamerasActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.ResultDetailShow.ResultShowActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.ScanActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.UpdateTitle.UpdateTitleActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.updateclassname.UpdateclassNameActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.updateclassname.UpdateClassTitleActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsterGroup.InsertGroupTitleActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsterGroup.UpdateGroupTitleActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsertStudent.InsertStudentAllActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.InsertStudent.InsertStudentGroupActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.PhotoLargeActivity"
+           android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.PhotoLargesActivity"
+            android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.QuestionSearch.QuestionSearchActivity"
+           android:screenOrientation="portrait" />
+
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.NoticeList.NoticeActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.NoticeList.NoticesDetailActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.NoticeList.NoticeEditActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.exam.ExamlistActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.exammanage.ExamManageActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.insertscoreuser.ChooseUserScoreActivity"
+           android:screenOrientation="portrait" />
+       <activity
+           android:name="net.dxtek.haoyixue.ecp.android.activity.insertscoreuser.InsterScoreActivity"
+           android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.newpoint.NewpointActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.newpoint.NewpointInsertActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.newpoint.NewpointChooseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.newpoint.NewpointScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.insertfolder.InsertFolderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.jobpromote.JobpromoteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.dxtek.haoyixue.ecp.android.activity.jobinformation.JobinformationActivity"
+            android:screenOrientation="portrait" />
+   </application>
+</manifest>
